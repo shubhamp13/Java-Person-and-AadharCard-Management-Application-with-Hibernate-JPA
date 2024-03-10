@@ -17,7 +17,7 @@ public class Aadhaar
 	private long id;
 	private String name;
 	private int age;
-	@OneToOne (fetch = FetchType.LAZY)
+	@OneToOne (mappedBy = "aadhaar",fetch = FetchType.LAZY)
 	private Person person;
 	public long getId() {
 		return id;
