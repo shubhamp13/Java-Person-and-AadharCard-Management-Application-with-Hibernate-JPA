@@ -44,8 +44,11 @@ public class PersonDao
 		EntityManager entityManager=getEntityManager();
 		Person dbPerson=entityManager.find(Person.class, id);
 		Aadhaar aadhaar=dbPerson.getAadhaar();
-		AadharDao aadharDao=new AadharDao();
-		aadharDao.deleteAadhar(aadhaar.getId());
+		if(aadhaar!=null)
+		{
+			AadharDao aadharDao=new AadharDao();
+			aadharDao.deleteAadhar(aadhaar.getId());
+		}
 		entityManager.getTransaction().begin();
 		entityManager.remove(dbPerson);
 		entityManager.getTransaction().commit();
